@@ -1,0 +1,141 @@
+<form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+  <div class="content-heading">
+    <div>
+      Reverse Automator
+      <small>...a brief description of the function will be displayed here...</small>
+    </div>
+  </div>
+
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="form-group">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Personnel to clearance</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload new personnel to clearance file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="personnelToclearanceTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Door to clearance</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload new door to clearance file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="doorToclearanceTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <button class="btn btn-labeled btn-info mb-2" type="button" (click)="slideClearanceSettings()">
+      <span class="btn-label">
+        <i class="fa fa-exclamation"></i>
+      </span>{{advancedClearanceConfiguration == 0 ? "Show" : "Hide"}} Advanced Clearance Configuration
+    </button>
+  </p>
+
+  <div class="card card-default" *ngIf="advancedClearanceConfiguration" [@slideInOut]>
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Advanced Clearance Configuration</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Door groups</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload door groups clearance file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="doorGroupsTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Doors to area</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload new doors to area file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="doorsToAreaTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Doors to schedule</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload new doors to schedule file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="doorsToScheduleTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Schedules</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload new schedules file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="schedulesTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="form-group">
+        <app-dnaselector></app-dnaselector>
+        <app-functionbuttonset></app-functionbuttonset>
+      </div>
+    </div>
+  </div>
+</form>
+
+<ng-template #personnelToClearanceTooltip>
+  <h4>Personnel to clearance</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #doorToclearanceTooltip>
+  <h4>Door to clearance</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #doorGroupsTooltip>
+  <h4>Door groups</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #doorsToAreaTooltip>
+  <h4>Doors to area</h4>
+  <h5>-</h5>
+</ng-template><ng-template #doorsToScheduleTooltip>
+  <h4>Doors to schedules</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #schedulesTooltip>
+  <h4>Schedules</h4>
+  <h5>-</h5>
+</ng-template>

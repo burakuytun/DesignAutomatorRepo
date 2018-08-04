@@ -1,0 +1,53 @@
+<form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+
+  <br />
+  <div class="list-group">
+    <!-- START list title-->
+    <div class="list-group-item border-0">
+      <h6>
+        Current Default DNA
+      </h6>
+    </div>
+    <!-- END list title-->
+    <div class="list-group-item list-group-item-action border-0">
+      <div class="media" *ngIf="!defaultDna">
+        <div class="media-body text-truncate">
+          <strong class="text-danger">Please assign a default DNA</strong>
+        </div>
+        <div class="ml-auto">
+          <span class="circle bg-danger circle-lg"></span>
+        </div>
+      </div>
+      <div class="media" *ngIf="defaultDna">
+        <div class="media-body text-truncate">
+          <strong>{{defaultDna.dnaName}}</strong>
+          - <label class="text-muted">{{defaultDna.clientName}}</label>
+        </div>
+        <div class="ml-auto">
+          <span class="circle bg-success circle-lg"></span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <hr />
+    </div>
+    <!-- START list title-->
+    <div class="list-group-item border-0">
+      <label>Set a New Default DNA</label>
+    </div>
+    <!-- END list title-->
+    <div class="list-group-item list-group-item-action border-0">
+      <app-dnaselector  (defaultDnaChanged)="defaultDnaChanged($event)"></app-dnaselector>
+    </div>
+    <div class="list-group-item list-group-item-action border-0">
+      <div class="media">
+        <div class="form-group">
+          <!-- Optional link to list more users-->
+          <a class="btn btn-green btn-sm" href="#" title="Set selected Dna as default" (click)="setDnaAsDefaultEvent()" >
+            <strong>Set as Default</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

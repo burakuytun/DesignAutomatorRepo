@@ -1,0 +1,57 @@
+<form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+  <div class="content-heading">
+    <div>
+      System Conversion to Hardware Sheet
+      <small>...a brief description of the function will be displayed here...</small>
+    </div>
+  </div>
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Source file uploads</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Audit file</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload audit file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="auditFileTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Clearance name mapping</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload clearance name mapping file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="clearanceNameMappingTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="form-group">
+        <app-dnaselector></app-dnaselector>
+        <app-functionbuttonset></app-functionbuttonset>
+      </div>
+    </div>
+  </div>
+</form>
+
+<ng-template #auditFileTooltip>
+  <h4>Audit file</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #clearanceNameMappingTooltip>
+  <h4>Clearance name mapping</h4>
+  <h5>-</h5>
+</ng-template>

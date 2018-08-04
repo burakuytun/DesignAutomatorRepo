@@ -1,0 +1,498 @@
+<form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+
+  <div class="content-heading">
+    <div>
+      {{functionName}} Commissioning Sheet
+      <small>...a brief description of the function will be displayed here...</small>
+    </div>
+  </div>
+  <app-customfileupload></app-customfileupload>
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="form-group">
+        <app-dnaselector></app-dnaselector>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Use source addressing</label>
+          <div class="col-md-9">
+            <div class="checkbox c-checkbox" style="margin-top: 10px">
+              <label>
+                <input type="checkbox" value="" />
+                <span class="fa fa-check"></span>
+              </label>
+            </div>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="useSourceAddressingTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Use source naming</label>
+          <div class="col-md-9">
+            <div class="checkbox c-checkbox" style="margin-top: 10px">
+              <label>
+                <input type="checkbox" value="" />
+                <span class="fa fa-check"></span>
+              </label>
+            </div>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="useSourceNamingTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">System Configuration</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">System type</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="systemTypeTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Panel type</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="panelTypeTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Reader connection Type</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="readerConnectionTypeTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Number of boards per Controller</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="numberofBoardsTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Number of reader ports per board</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="numberofReadersTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    <button class="btn btn-labeled btn-info mb-2" type="button" (click)="slideSystemConfiguration()">
+      <span class="btn-label">
+        <i class="fa fa-exclamation"></i>
+      </span>{{advancedSystemConfigurationVisibleSate == 0 ? "Show" : "Hide"}} Advanced System Configuration
+    </button>
+  </p>
+  <div class="card card-default" *ngIf="advancedSystemConfigurationVisibleSate" [@slideInOut]>
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Advanced System Configuration</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Number of inputs per reader</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>advancedSystemConfigurationVisibleSate
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="numberOfInputsPerReaderTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Number of outputs per reader</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="numberOfOutputsPerReaderTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Utilise all board ports</label>
+          <div class="col-md-9">
+            <div class="checkbox c-checkbox">
+              <label>
+                <input type="checkbox" value="" />
+                <span class="fa fa-check"></span>
+              </label>
+            </div>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="utiliseAllBoardPortsTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Create Site Nomenclature</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Nomenclature type</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="nomenclatureTypeTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Continent</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="continentTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">City-Building code</label>
+          <div class="col-md-9">
+            <input class="form-control" type="text" />
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="cityBuildingCodeTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Building type</label>
+          <div class="col-md-9">
+            <input class="form-control" type="text" placeholder="3 characters" formControlName="buildingType" [formControl]="valForm.controls['buildingType']" />
+            <span class="text-danger" *ngIf="valForm.controls['buildingType'].hasError('maxlength') && (valForm.controls['buildingType'].dirty || valForm.controls['buildingType'].touched)">Please enter 3 characters</span>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="buildingTypeTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Time zone</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="timeZoneTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <app-functionbuttonset></app-functionbuttonset>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <button class="btn btn-labeled btn-info mb-2" type="button" (click)="slideNamingSettings()">
+      <span class="btn-label">
+        <i class="fa fa-exclamation"></i>
+      </span>{{advancedNamingVisibleSate == 0 ? "Show" : "Hide"}} Advanced Naming Settings
+    </button>
+  </p>
+  <div class="card card-default" *ngIf="advancedNamingVisibleSate" [@slideInOut]>
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Advanced Naming Configuration</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Door</label>
+          <div class="col-md-9" [sortablejs]="doorCurrentSelected" [sortablejsOptions]="optionsDoors">
+            <button type="button" class="btn btn-secondary" *ngFor="let currentDoor of doorCurrentSelected">{{ currentDoor[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Example</label>
+          <div class="col-md-9">
+            {{ doorExampleText }}
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Door components</label>
+          <div class="col-md-9" [sortablejs]="doorComponents" [sortablejsOptions]="optionsDoors">
+            <button type="button" class="btn btn-secondary" listtype="currentdoor" name="{{ doorComponent[0] }}" *ngFor="let doorComponent of doorComponents">{{ doorComponent[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <hr />
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Reader</label>
+          <div class="col-md-9" [sortablejs]="readerCurrentSelected" [sortablejsOptions]="optionsReaders">
+            <button type="button" class="btn btn-secondary" *ngFor="let currentReader of readerCurrentSelected">{{ currentReader[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Example</label>
+          <div class="col-md-9">
+            {{ readerExampleText }}
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Reader components</label>
+          <div class="col-md-9" [sortablejs]="readerComponents" [sortablejsOptions]="optionsReaders">
+            <button type="button" class="btn btn-secondary" listtype="currentreader" name="{{ readerComponent[0] }}" *ngFor="let readerComponent of readerComponents">{{ readerComponent[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <hr />
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Input</label>
+          <div class="col-md-9" [sortablejs]="inputCurrentSelected" [sortablejsOptions]="optionsInputs">
+            <button type="button" class="btn btn-secondary" *ngFor="let currentInput of inputCurrentSelected">{{ currentInput[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Example</label>
+          <div class="col-md-9">
+            {{ inputExampleText }}
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Input components</label>
+          <div class="col-md-9" [sortablejs]="inputComponents" [sortablejsOptions]="optionsInputs">
+            <button type="button" class="btn btn-secondary" listtype="currentinput" name="{{ inputComponent[0] }}" *ngFor="let inputComponent of inputComponents">{{ inputComponent[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <hr />
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Output</label>
+          <div class="col-md-9" [sortablejs]="outputCurrentSelected" [sortablejsOptions]="optionsOutputs">
+            <button type="button" class="btn btn-secondary" *ngFor="let currentOutput of outputCurrentSelected">{{ currentOutput[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Example</label>
+          <div class="col-md-9">
+            {{ outputExampleText }}
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Output components</label>
+          <div class="col-md-9" [sortablejs]="outputComponents" [sortablejsOptions]="optionsOutputs">
+            <button type="button" class="btn btn-secondary" listtype="currentoutput" name="{{ outputComponent[0] }}" *ngFor="let outputComponent of outputComponents">{{ outputComponent[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <hr />
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Remote module input</label>
+          <div class="col-md-9" [sortablejs]="rmInputCurrentSelected" [sortablejsOptions]="optionsRmInputs">
+            <button type="button" class="btn btn-secondary" *ngFor="let currentRmInput of rmInputCurrentSelected">{{ currentRmInput[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Example</label>
+          <div class="col-md-9">
+            {{ rmInputExampleText }}
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Remote module Input components</label>
+          <div class="col-md-9" [sortablejs]="rmInputComponents" [sortablejsOptions]="optionsRmInputs">
+            <button type="button" class="btn btn-secondary" listtype="currentrminput" name="{{ rmInputComponent[0] }}" *ngFor="let rmInputComponent of rmInputComponents">{{ rmInputComponent[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <hr />
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Remote module output</label>
+          <div class="col-md-9" [sortablejs]="rmOutputCurrentSelected" [sortablejsOptions]="optionsRmOutputs">
+            <button type="button" class="btn btn-secondary" *ngFor="let currentRmOutput of rmOutputCurrentSelected">{{ currentRmOutput[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Example</label>
+          <div class="col-md-9">
+            {{ rmOutputExampleText }}
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Remote module input components</label>
+          <div class="col-md-9" [sortablejs]="rmOutputComponents" [sortablejsOptions]="optionsRmOutputs">
+            <button type="button" class="btn btn-secondary" listtype="currentrmoutput" name="{{ rmoutputComponent[0] }}" *ngFor="let rmoutputComponent of rmOutputComponents">{{ rmoutputComponent[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <hr />
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Cluster</label>
+          <div class="col-md-9" [sortablejs]="clusterCurrentSelected" [sortablejsOptions]="optionsClusters">
+            <button type="button" class="btn btn-secondary" *ngFor="let currentCluster of clusterCurrentSelected">{{ currentCluster[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Example</label>
+          <div class="col-md-9">
+            {{ clusterExampleText }}
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Cluster components</label>
+          <div class="col-md-9" [sortablejs]="clusterComponents" [sortablejsOptions]="optionsClusters">
+            <button type="button" class="btn btn-secondary" listtype="currentcluster" name="{{ clusterComponent[0] }}" *ngFor="let clusterComponent of clusterComponents">{{ clusterComponent[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="unDefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <hr />
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Controller</label>
+          <div class="col-md-9" [sortablejs]="controllerCurrentSelected" [sortablejsOptions]="optionsControllers">
+            <button type="button" class="btn btn-secondary" *ngFor="let currentController of controllerCurrentSelected">{{ currentController[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Example</label>
+          <div class="col-md-9">
+            {{ controllerExampleText }}
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Controller components</label>
+          <div class="col-md-9" [sortablejs]="controllerComponents" [sortablejsOptions]="optionsControllers">
+            <button type="button" class="btn btn-secondary" listtype="currentcontroller" name="{{ controllerComponent[0] }}" *ngFor="let controllerComponent of controllerComponents">{{ controllerComponent[0] }}</button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="undefinedTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <hr />
+
+      </div>
+    </div>
+  </div>
+</form>
+
+<ng-template #useSourceAddressingTooltip>
+  <h4>Use Source Addressing</h4>
+  <h5>Select when migrating an existing system "hardware sheet" into different commissioning sheets. Compatible commissioning sheets* will be populated with the devices in the same order as existing writing.</h5>
+</ng-template>
+<ng-template #useSourceNamingTooltip>
+  <h4>Use Source Naming</h4>
+  <h5>Select when migrating an existing system "hardware sheet" into different commissioning hseets. Compatible commissioning sheets* will retain the existing system naming convention and not adopt the "DNA" naming convention.</h5>
+</ng-template>
+<ng-template #systemTypeTooltip>
+  <h4>System Type</h4>
+  <h5>Select the system you wish to produce commissioning sheets for. The system type relates to the manufacturer/name of the access control system.</h5>
+</ng-template>
+<ng-template #panelTypeTooltip>
+  <h4>Panel Type</h4>
+  <h5>Select the type of panel you wish to produce commissioning sheets for. The panel type will include a list of supported "panels", also known as "controllers"</h5>
+</ng-template>
+<ng-template #readerConnectionTypeTooltip>
+  <h4>Reader Connection Type</h4>
+  <h5>Select the type of the reader connection you wish to produce commissioning sheets for. The reader connection type indicates the connection type used when connecting readers, for example "directly connected to the panel" or "connected to a remote board", etc.</h5>
+</ng-template>
+<ng-template #numberofBoardsTooltip>
+  <h4>Number of Boards Per Controller</h4>
+  <h5>Select the number of "boards" you wish to specify for each single access control panel. This allows you to reduce the number of physical circuit boards that will be used on a per panel basis. The default is set to the maximum "boards" that the panel can control.</h5>
+</ng-template>
+<ng-template #numberofReadersTooltip>
+  <h4>Number of Reader Ports Per Board</h4>
+  <h5>Select the number of "ports" you wish to specify for use for each "board". This allows you to reduce the number of connections that will be utilised on each "board". The connections are divided into "reader" ports. The default is set to the maximum reader "ports" that the "board" physically has.</h5>
+</ng-template>
+<ng-template #numberOfInputsPerReaderTooltip>
+  <h4>Number of Inputs Per Reader</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #numberOfOutputsPerReaderTooltip>
+  <h4>Number of Outputs Per Reader</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #utiliseAllBoardPortsTooltip>
+  <h4>Utilise All Board Ports</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #nomenclatureTypeTooltip>
+  <h4>Nomenclature Type</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #continentTooltip>
+  <h4>Continent</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #cityBuildingCodeTooltip>
+  <h4>City Building Code</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #buildingTypeTooltip>
+  <h4>Building Type</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #timeZoneTooltip>
+  <h4>Time Zone</h4>
+  <h5>-</h5>
+</ng-template>
+<ng-template #undefinedTooltip>
+  <h4>-</h4>
+  <h5>-</h5>
+</ng-template>

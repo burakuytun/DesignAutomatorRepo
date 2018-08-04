@@ -1,0 +1,109 @@
+<form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+  <div class="content-heading">
+    <div>
+      System Conversion to Hardware Sheet
+      <small>...a brief description of the function will be displayed here...</small>
+    </div>
+  </div>
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Source file uploads</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Controllers</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload controllers file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="controllersTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Doors</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload new doors file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="doorsTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Readers</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload readers file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="readersTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Inputs</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload inputs file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="inputsTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Outputs</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload outputs file
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="outputsTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="form-group">
+        <app-dnaselector></app-dnaselector>
+        <app-functionbuttonset></app-functionbuttonset>
+      </div>
+    </div>
+  </div>
+</form>
+
+<ng-template #controllersTooltip>
+  <h4>Controllers</h4>
+  <h5>Please select the exported "controllers" spreadsheet generated from your CCure 800 system. For more information regarding system exports from CCure 800, please refer to training documentation.</h5>
+</ng-template>
+<ng-template #doorsTooltip>
+  <h4>Doors</h4>
+  <h5>Please select the exported "doors" spreadsheet generated from your CCure 800 system. For more information regarding system exports from CCure 800, please refer to training documentation.</h5>
+</ng-template>
+<ng-template #readersTooltip>
+  <h4>Readers</h4>
+  <h5>Please select the exported "readers" spreadsheet generated from your CCure 800 system. For more information regarding system exports from CCure 800, please refer to training documentation.</h5>
+</ng-template>
+<ng-template #inputsTooltip>
+  <h4>Inputs</h4>
+  <h5>Please select the exported "inputs" spreadsheet generated from your CCure 800 system. For more information regarding system exports from CCure 800, please refer to training documentation.</h5>
+</ng-template>
+<ng-template #outputsTooltip>
+  <h4>Outputs</h4>
+  <h5>Please select the exported "outputs" spreadsheet generated from your CCure 800 system. For more information regarding system exports from CCure 800, please refer to training documentation.</h5>
+</ng-template>

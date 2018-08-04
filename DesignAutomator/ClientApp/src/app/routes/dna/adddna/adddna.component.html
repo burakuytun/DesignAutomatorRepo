@@ -1,0 +1,205 @@
+<form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+  <div class="content-heading">
+    <div>
+      Add new DNA
+      <small>...a brief description of the function will be displayed here...</small>
+    </div>
+  </div>
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">DNA Specifications</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">DNA name</label>
+          <div class="col-md-9">
+            <input class="form-control" type="text" formControlName="dnaName" [formControl]="valForm.controls['dnaName']" />
+            <span class="text-danger" *ngIf="valForm.controls['dnaName'].hasError('required') && (valForm.controls['dnaName'].dirty || valForm.controls['dnaName'].touched)">This field is required</span>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="dnaNameTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Copy from</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="dnaCopyFromTootip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Select client</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="selectClientTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Icon</label>
+          <div class="col-md-9">
+            <label for="image-input" class="file-upload">
+              <button class="btn btn-secondary">
+                <em class="fa fa-upload mr"></em> Upload icon for the DNA
+              </button>
+              <input id="image-input" type="file">
+            </label>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="iconTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Naming of DNA(prefix)</label>
+          <div class="col-md-9">
+            <input class="form-control" type="text" formControlName="dnaPrefix" [formControl]="valForm.controls['dnaPrefix']" />
+            <span class="text-danger" *ngIf="valForm.controls['dnaPrefix'].hasError('required') && (valForm.controls['dnaPrefix'].dirty || valForm.controls['dnaPrefix'].touched)">This field is required</span>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="dnaPrefixTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Client name</label>
+          <div class="col-md-9">
+            <input class="form-control" type="text" formControlName="clientName" [formControl]="valForm.controls['clientName']" />
+            <span class="text-danger" *ngIf="valForm.controls['clientName'].hasError('required') && (valForm.controls['clientName'].dirty || valForm.controls['clientName'].touched)">This field is required</span>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="clientNameTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Address line 1</label>
+          <div class="col-md-9">
+            <input class="form-control" type="text" formControlName="addressLine1" [formControl]="valForm.controls['addressLine1']" />
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="addressLine1Tooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Address line 2</label>
+          <div class="col-md-9">
+            <input class="form-control" type="text" formControlName="addressLine2" [formControl]="valForm.controls['addressLine2']" />
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="addressLine2Tooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Country</label>
+          <div class="col-md-9">
+            <ngx-select display [items]="countries" [disabled]="disabled" (data)="refreshValue($event)" (selected)="selected($event)" (removed)="removed($event)" (typed)="typed($event)" placeholder="No country selected">
+            </ngx-select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="countryTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Post code</label>
+          <div class="col-md-9">
+            <input class="form-control" type="text" formControlName="postcode" [formControl]="valForm.controls['postcode']" />
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="postCodeTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Colour 1</label>
+          <div class="col-md-7">
+            <input class="form-control" [(colorPicker)]="colour1" [value]="colour1" />
+          </div>
+          <div class="col-md-1 rounded" [style.background-color]="colour1">
+          </div> <div class="col-md-1">
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="colour1Tooptip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Colour 2</label>
+          <div class="col-md-7">
+            <input class="form-control" [(colorPicker)]="colour2" [value]="colour2" />
+          </div>
+          <div class="col-md-1 rounded" [style.background-color]="colour2">
+          </div> <div class="col-md-1">
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="colour2Tooptip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Colour 3</label>
+          <div class="col-md-7">
+            <input class="form-control" [(colorPicker)]="colour3" [value]="colour3" />
+          </div>
+          <div class="col-md-1 rounded" [style.background-color]="colour3">
+          </div> <div class="col-md-1">
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="colour3Tooptip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Colour 4</label>
+          <div class="col-md-7">
+            <input class="form-control" [(colorPicker)]="colour4" [value]="colour4" />
+          </div>
+          <div class="col-md-1 rounded" [style.background-color]="colour4">
+          </div> <div class="col-md-1">
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="colour4Tooptip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Colour 5</label>
+          <div class="col-md-7">
+            <input class="form-control" [(colorPicker)]="colour5" [value]="colour5" />
+          </div>
+          <div class="col-md-1 rounded" [style.background-color]="colour5">
+          </div> <div class="col-md-1">
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="colour5Tooptip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Assign Libraries</label>
+          <div class="col-md-4">
+            <div class="card card-warning">
+              <div class="card-header">
+                Available libraries
+              </div>
+              <div class="card-body" dnd-sortable-container [dropZones]="['boxers-zone']" [sortableData]="listAvailableLibraries">
+                <ul class="list-group">
+                  <li *ngFor="let item of listAvailableLibraries; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{item}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="card">
+              <div class="card-header">
+                Assigned Libraries
+              </div>
+              <div class="card-body" dnd-sortable-container [dropZones]="['boxers-zone']" [sortableData]="listAssignedLibraries">
+                <ul class="list-group">
+                  <li *ngFor="let item of listAssignedLibraries; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{item}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <a class="col-xs-1 align-self-top text-dark" href="#" [tooltip]="colour5Tooptip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-2"></div><div class="col-md-10">
+            <button type="button" class="btn btn-secondary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

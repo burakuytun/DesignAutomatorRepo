@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CrossCutting.Mapping\CrossCutting.Mapping.csproj" />
+    <ProjectReference Include="..\CrossCutting.Security\CrossCutting.Security.csproj" />
+    <ProjectReference Include="..\CrossCutting.Utils\CrossCutting.Utils.csproj" />
+    <ProjectReference Include="..\Database\Infrastructure.Database.csproj" />
+    <ProjectReference Include="..\Model.Models\Model.Models.csproj" />
+    <ProjectReference Include="..\Model.ViewModels\Model.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Users\burak\.nuget\packages\newtonsoft.json\9.0.1\lib\netstandard1.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

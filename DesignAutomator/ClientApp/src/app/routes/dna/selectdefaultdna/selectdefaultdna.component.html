@@ -1,0 +1,24 @@
+<form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+  <div class="content-heading">
+    <div>
+      Select Default DNA
+      <small>...a brief description of the function will be displayed here...</small>
+    </div>
+  </div>
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="form-group">
+        <app-dnaselector></app-dnaselector>
+      </div>
+      <div class="form-group">
+        <div class="col-md-12">
+          <button class="btn btn-labeled btn-primary mb-2" type="button" (click)="openSideBar()">
+            <span class="btn-label">
+              <i class="fa fa-save"></i>
+            </span>Set as Default DNA
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

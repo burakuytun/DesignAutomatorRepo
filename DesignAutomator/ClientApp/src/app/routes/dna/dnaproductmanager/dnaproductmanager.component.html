@@ -1,0 +1,367 @@
+<form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+  <div class="content-heading">
+    <div>
+      DNA Product Manager
+      <small>...a brief description of the function will be displayed here...</small>
+    </div>
+  </div>
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Manufacturer</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <div class="col-md-8">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <div class="col-md-1">
+            <button class="btn btn-labeled btn-info mb-2" type="button" (click)="ngxSmartModalService.getModal('createManufacturerModal').open()">
+              <span class="btn-label">
+                <i class="fa fa-plus"></i>
+              </span>Add
+            </button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-labeled btn-danger mb-2" type="button">
+              <span class="btn-label">
+                <i class="fa fa-minus"></i>
+              </span>Delete
+            </button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="manufacturerTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Products Library</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <div class="col-md-8">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <div class="col-md-1">
+            <button class="btn btn-labeled btn-info mb-2" type="button" (click)="ngxSmartModalService.getModal('addProductLibraryModal').open()">
+              <span class="btn-label">
+                <i class="fa fa-plus"></i>
+              </span>Add
+            </button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-labeled btn-danger mb-2" type="button">
+              <span class="btn-label">
+                <i class="fa fa-minus"></i>
+              </span>Delete
+            </button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="productLibraryTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <button class="btn btn-labeled btn-info mb-2" type="button" (click)="slideShowLibraryParameters()">
+      <span class="btn-label">
+        <i class="fa fa-exclamation"></i>
+      </span>{{libraryParametersVisibleState == 0 ? "Show" : "Hide"}} Library Parameters
+    </button>
+  </p>
+
+  <div class="card card-default" *ngIf="libraryParametersVisibleState" [@slideInOut]>
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Library Parameters</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <div class="col-md-12">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Attribute</th>
+                  <th>Value</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Active</td>
+                  <td>Yes</td>
+                  <td>
+                    <button class="btn btn-xs btn-warning" type="button">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Commissioning Rate</td>
+                  <td>100</td>
+                  <td>
+                    <button class="btn btn-xs btn-warning" type="button">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Install Rate</td>
+                  <td>200</td>
+                  <td>
+                    <button class="btn btn-xs btn-warning" type="button">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="button" class="btn btn-secondary" listtype="currentdoor" name="{{ doorComponent[0] }}" *ngFor="let doorComponent of doorComponents">{{ doorComponent[0] }}</button>
+          </div>
+        </div>
+        <div class="form-grup row">
+          <div class="col-md-12">
+            <button class="btn btn-labeled btn-info mb-2" type="button" (click)="ngxSmartModalService.getModal('addProductLibraryParameterModal').open()">
+              <span class="btn-label">
+                <i class="fa fa-plus"></i>
+              </span>Add New Library Parameter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Products</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <div class="col-md-12">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Product Library</th>
+                  <th>Assigned To Device</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Axis Camera A</td>
+                  <td>Acis-Camera</td>
+                  <td>True</td>
+                  <td>
+                    <button class="btn btn-xs btn-info" type="button">Edit</button>
+                    <button class="btn btn-xs btn-warning" type="button">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Acis-Securty XX</td>
+                  <td>Acis-Security</td>
+                  <td>True</td>
+                  <td>
+                    <button class="btn btn-xs btn-info" type="button">Edit</button>
+                    <button class="btn btn-xs btn-warning" type="button">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Break Glass MM</td>
+                  <td>Acis-Break Glass</td>
+                  <td>True</td>
+                  <td>
+                    <button class="btn btn-xs btn-info" type="button">Edit</button>
+                    <button class="btn btn-xs btn-warning" type="button">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="form-grup row">
+          <div class="col-md-12">
+            <button class="btn btn-labeled btn-info mb-2" type="button" (click)="ngxSmartModalService.getModal('addProductModal').open()">
+              <span class="btn-label">
+                <i class="fa fa-plus"></i>
+              </span>Add New Product
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <ngx-smart-modal #createManufacturerModal identifier="createManufacturerModal" customClass='msg-modal'>
+    <div class="page-header" style="font-size: large; margin: 0px 0px 15px 0px; padding:0px">Add Manufacturer</div>
+    <div class="form-group">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Manufacturer</label>
+        <div class="col-md-9">
+          <input class="form-control" type="text" placeholder="Please enter manufacturer name" />
+        </div>
+        <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="manufacturerNameTooltip" container="body"><em class="icon-info"></em></a>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12">
+          <button class="btn btn-labeled btn-info mb-2" type="button">
+            <span class="btn-label">
+              <i class="fa fa-link"></i>
+            </span>Create Manufacturer
+          </button>
+        </div>
+      </div>
+    </div>
+  </ngx-smart-modal>
+
+  <ngx-smart-modal #addProductLibraryModal identifier="addProductLibraryModal" customClass='msg-modal'>
+    <div class="page-header" style="font-size: large; margin: 0px 0px 15px 0px; padding:0px">Add Product Library</div>
+    <div class="form-group">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Product Library</label>
+        <div class="col-md-9">
+          <select class="form-control">
+            <option value="">Please Select</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+          </select>
+        </div>
+        <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="productLibraryTooltip" container="body"><em class="icon-info"></em></a>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12">
+          <button class="btn btn-labeled btn-info mb-2" type="button">
+            <span class="btn-label">
+              <i class="fa fa-link"></i>
+            </span>Create Manufacturer
+          </button>
+        </div>
+      </div>
+    </div>
+  </ngx-smart-modal>
+
+  <ngx-smart-modal #addProductLibraryParameterModal identifier="addProductLibraryParameterModal" customClass='msg-modal'>
+    <div class="page-header" style="font-size: large; margin: 0px 0px 15px 0px; padding:0px">Add New Library Parameter</div>
+    <div class="form-group">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Attribute</label>
+        <div class="col-md-9">
+          <input class="form-control" type="text" placeholder="Attribute name" />
+        </div>
+        <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="attributeNameTooltip" container="body"><em class="icon-info"></em></a>
+      </div>   <div class="form-group row">
+        <label class="col-md-2 col-form-label">Value</label>
+        <div class="col-md-9">
+          <input class="form-control" type="text" placeholder="Attribute value" />
+        </div>
+        <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="attributeValueTooltip" container="body"><em class="icon-info"></em></a>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12">
+          <button class="btn btn-labeled btn-info mb-2" type="button">
+            <span class="btn-label">
+              <i class="fa fa-link"></i>
+            </span>Add Parameter
+          </button>
+        </div>
+      </div>
+    </div>
+  </ngx-smart-modal>
+
+  <ngx-smart-modal #addProductModal identifier="addProductModal" customClass='msg-modal'>
+    <div class="page-header" style="font-size: large; margin: 0px 0px 15px 0px; padding:0px">Add New Product</div>
+    <div class="form-group">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Name</label>
+        <div class="col-md-9">
+          <input class="form-control" type="text" placeholder="Product name" />
+        </div>
+        <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="productNameTooltip" container="body"><em class="icon-info"></em></a>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Product Library</label>
+        <div class="col-md-9">
+          <select class="form-control">
+            <option value="">Please Select</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+          </select>
+        </div>
+        <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="productLibraryTooltip" container="body"><em class="icon-info"></em></a>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Assigned To Device</label>
+        <div class="col-md-9">
+          <select class="form-control">
+            <option value="">Please Select</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+          </select>b
+        </div>
+        <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="assignedToDeviceTooltip" container="body"><em class="icon-info"></em></a>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12">
+          <button class="btn btn-labeled btn-info mb-2" type="button">
+            <span class="btn-label">
+              <i class="fa fa-link"></i>
+            </span>Add Product
+          </button>
+        </div>
+      </div>
+    </div>
+  </ngx-smart-modal>
+</form>
+
+<ng-template #manufacturerTooltip>
+  <h4>Manufacturer</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #productLibraryTooltip>
+  <h4>Product Library</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #manufacturerNameTooltip>
+  <h4>Manufacturer Name</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #attributeNameTooltip>
+  <h4>Attribute Name</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #attributeValueTooltip>
+  <h4>Attribute Value</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #productNameTooltip>
+  <h4>Product Name</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #assignedToDeviceTooltip>
+  <h4>Assigned Device</h4>
+  <h5>-</h5>
+</ng-template>

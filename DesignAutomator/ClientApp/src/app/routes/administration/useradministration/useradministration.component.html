@@ -1,0 +1,121 @@
+<div class="content-heading">
+  <div>
+    to
+    User Administration
+    <small>...a brief description of the function will be displayed here...</small>
+  </div>
+</div>
+<div class="mb-3 clearfix">
+  <div class="pull-let wd-md">
+    <input *ngIf="config.filtering" placeholder="Filter all columns" [ngTableFiltering]="config.filtering" class="form-control" (tableChanged)="onChangeTable(config)" />
+  </div>
+</div>
+<div class="card card-default">
+  <div class="card-body">
+    <div class="table-responsive">
+      <ng-table [config]="config" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
+      </ng-table>
+    </div>
+    <div style="margin-top: 10px">
+      <button class="btn btn-labeled btn-info mb-2" (click)="ngxSmartModalService.getModal('editUserModal').open();" type="button">
+        <span class="btn-label">
+          <i class="fa fa-user"></i>
+        </span>Add New User
+      </button>
+    </div>
+  </div>
+</div>
+<div class="text-right">
+  <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage" [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" (pageChanged)="onChangeTable(config, $event)" (numPages)="numPages = $event">
+  </pagination>
+</div>
+
+<ngx-smart-modal #editUserModal identifier="editUserModal" customClass='msg-modal'>
+  <div class="page-header" style="font-size: large; margin: 0px 0px 15px 0px; padding:0px">User Information</div>
+  <div class="form-group">
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label">Name</label>
+      <div class="col-md-9">
+        <input class="form-control" type="text" placeholder="Please enter user name" />
+      </div>
+      <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="nameTooltip" container="body"><em class="icon-info"></em></a>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label">Active</label>
+      <div class="col-md-9">
+        <div class="checkbox c-checkbox" style="margin-top: 10px">
+          <label>
+            <input type="checkbox" value="" />
+            <span class="fa fa-check"></span>
+          </label>
+        </div>
+      </div>
+      <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="activeTooltip" container="body"><em class="icon-info"></em></a>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label">SQL Authentication (or LDAP)</label>
+      <div class="col-md-9">
+        <div class="checkbox c-checkbox" style="margin-top: 10px">
+          <label>
+            <input type="checkbox" value="" />
+            <span class="fa fa-check"></span>
+          </label>
+        </div>
+      </div>
+      <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="sqlOrLDAPTooltip" container="body"><em class="icon-info"></em></a>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label">Admin</label>
+      <div class="col-md-9">
+        <div class="checkbox c-checkbox" style="margin-top: 10px">
+          <label>
+            <input type="checkbox" value="" />
+            <span class="fa fa-check"></span>
+          </label>
+        </div>
+      </div>
+      <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="adminTooltip" container="body"><em class="icon-info"></em></a>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label">DNA Manager</label>
+      <div class="col-md-9">
+        <div class="checkbox c-checkbox" style="margin-top: 10px">
+          <label>
+            <input type="checkbox" value="" />
+            <span class="fa fa-check"></span>
+          </label>
+        </div>
+      </div>
+      <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="dnaManagerTooltip" container="body"><em class="icon-info"></em></a>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-12">
+        <button class="btn btn-labeled btn-info mb-2" type="button">
+          <span class="btn-label">
+            <i class="fa fa-save"></i>
+          </span>Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</ngx-smart-modal>
+
+<ng-template #nameTooltip>
+  <h4>Name</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #activeTooltip>
+  <h4>Active</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #sqlOrLDAPTooltip>
+  <h4>SQL or LDAP</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #dnaManagerTooltip>
+  <h4>DNA Manager</h4>
+  <h5>-</h5>
+</ng-template>

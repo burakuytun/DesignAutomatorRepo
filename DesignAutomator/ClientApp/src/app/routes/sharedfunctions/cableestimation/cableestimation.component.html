@@ -1,0 +1,45 @@
+<div class="content-heading">
+  <div>
+    Cable Estimation for {{functionName}}
+    <small>...a brief description of the function will be displayed here...</small>
+  </div>
+</div>
+<app-customfileupload (uploadedFileChanged)="uploadedFileChanged($event)" [allowedFile]="[{ extension: 'dwg', count: 3 }, { extension: 'auto', count: 1 }]"></app-customfileupload>
+<div class="card card-default">
+  <div class="card-body">
+    <form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+      <div class="form-group">
+        <app-dnaselector></app-dnaselector>
+        <div class="form-group row">
+        </div>
+        <div class="form-group row">
+          <label class="col-lg-2 col-form-label text-lg-left">Allowance at field device</label>
+          <div class="col-lg-9">
+            <input class="form-control" type="number" formControlName="fieldAllowance" [formControl]="valForm.controls['fieldAllowance']" value="0" />
+            <span class="text-danger" *ngIf="valForm.controls['fieldAllowance'].hasError('required') && (valForm.controls['fieldAllowance'].dirty || valForm.controls['fieldAllowance'].touched)">This field is required</span>
+            <span class="text-danger" *ngIf="valForm.controls['fieldAllowance'].hasError('number') && (valForm.controls['fieldAllowance'].dirty || valForm.controls['fieldAllowance'].touched)">This field must be a valid number</span>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="fieldAllowanceTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <div class="form-group row">
+          <label class="col-lg-2 col-form-label text-lg-left">Allowance at control equipment</label>
+          <div class="col-lg-9">
+            <input class="form-control" type="number" formControlName="equipmentAllowance" [formControl]="valForm.controls['equipmentAllowance']" value="0" />
+            <span class="text-danger" *ngIf="valForm.controls['equipmentAllowance'].hasError('required') && (valForm.controls['equipmentAllowance'].dirty || valForm.controls['equipmentAllowance'].touched)">This field is required</span>
+            <span class="text-danger" *ngIf="valForm.controls['equipmentAllowance'].hasError('number') && (valForm.controls['equipmentAllowance'].dirty || valForm.controls['equipmentAllowance'].touched)">This field must be a valid number</span>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="equipmentAllowanceTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <app-functionbuttonset></app-functionbuttonset>
+      </div>
+    </form>
+  </div>
+</div>
+<ng-template #fieldAllowanceTooltip>
+  <h4>Allowance at field device</h4>
+  <h5>Additional cable length required for making off/wiring the field device [in meters]</h5>
+</ng-template>
+<ng-template #equipmentAllowanceTooltip>
+  <h4>Allowance at control equipment</h4>
+  <h5>Additional cable length required for making off/wiring the control equipment [in meters]</h5>
+</ng-template>

@@ -1,0 +1,17 @@
+<div class="content-heading">
+  <div>
+    Door Wizard
+    <small>...a brief description of the function will be displayed here...</small>
+  </div>
+</div>
+<app-customfileupload></app-customfileupload>
+<div class="card card-default">
+  <div class="card-body">
+    <form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+      <div class="form-group">
+        <app-dnaselector></app-dnaselector>
+        <app-functionbuttonset></app-functionbuttonset>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="content-heading">
+  <div>
+    {{functionName}} {{functionName == 'CAD' ? 'Estimating Tools' : 'Bill Of Quantities'}}
+    <small>...a brief description of the function will be displayed here...</small>
+  </div>
+</div>
+<app-customfileupload (uploadedFileChanged)="uploadedFileChanged($event)" [allowedFile]="[{ extension: 'dwg', count: 3 }, { extension: 'auto', count: 1 }]"></app-customfileupload>
+<div class="card card-default">
+  <div class="card-body">
+    <form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+      <div class="form-group">
+        <app-functionbuttonset (processButtonClicked)="runFunction()" [isProcessDisabled] ="isProcessButtonDisabled"></app-functionbuttonset>
+      </div>
+    </form>
+  </div>
+</div>

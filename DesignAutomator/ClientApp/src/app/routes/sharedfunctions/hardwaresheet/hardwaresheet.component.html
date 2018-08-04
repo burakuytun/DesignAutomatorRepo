@@ -1,0 +1,29 @@
+<div class="content-heading">
+  <div>
+    {{functionName}} Hardware Sheet
+    <small>...a brief description of the function will be displayed here...</small>
+  </div>
+</div>
+<app-customfileupload></app-customfileupload>
+<div class="card card-default">
+  <div class="card-body">
+    <form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+      <div class="form-group">
+        <app-dnaselector></app-dnaselector>
+        <div class="form-group row">
+          <label class="col-lg-2 col-form-label text-lg-left">Address Reference</label>
+          <div class="col-lg-9">
+            <div class="checkbox c-checkbox">
+              <label>
+                <input type="checkbox" value=""/>
+                <span class="fa fa-check"></span>Add address reference to sheet
+              </label>
+            </div>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="addressReferenceAllowanceTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+        <app-functionbuttonset></app-functionbuttonset>
+      </div>
+    </form>
+  </div>
+</div>

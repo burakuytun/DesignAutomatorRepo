@@ -1,0 +1,12 @@
+<div class="form-group row">
+  <div class="col-md-1">
+    <button class="btn btn-secondary btn-lg" type="button">Help</button>
+  </div>
+  <div class="col-md-1">
+    <button class="btn btn-secondary btn-lg" type="button">Cancel</button>
+  </div>
+  <div class="col-md-1">
+    <button [disabled]="isProcessDisabled" class="btn btn-secondary btn-lg" (click)="onProcessClick()" type="button">Process</button>
+  </div>
+  <div class="col-md-9"></div>
+</div>

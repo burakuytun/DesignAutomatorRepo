@@ -1,0 +1,23 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl, ValidatorFn } from '@angular/forms';
+
+@Component({
+  selector: 'app-doorwizard',
+  templateUrl: './doorwizard.component.html',
+  styleUrls: ['./doorwizard.component.scss']
+})
+export class DoorWizardComponent implements OnInit {
+  functionName: string;
+  valForm: FormGroup;
+
+  constructor(fb: FormBuilder) {
+
+    // Model Driven validation
+    this.valForm = fb.group({
+    });
+  }
+
+  ngOnInit() {
+  }
+
+}

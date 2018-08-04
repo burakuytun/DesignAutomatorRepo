@@ -1,0 +1,494 @@
+<form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+  <div class="content-heading">
+    <div>
+      DNA Manager
+      <small>...a brief description of the function will be displayed here...</small>
+    </div>
+  </div>
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Configure DNA</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">DNA Client</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="dnaClientTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Configuration type</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="configurationTypeTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Discipline</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="disciplineTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Section</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="sectionTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Type</label>
+          <div class="col-md-9">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="type2Tooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-2">
+            <button class="btn btn-labeled btn-info mb-2" type="button">
+              <span class="btn-label">
+                <i class="fa fa-print"></i>
+              </span>Generate DNA Report
+            </button>
+          </div>
+          <div class="col-md-10"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Products Selection</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Device</label>
+          <div class="col-md-7">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-labeled btn-info mb-2" type="button" (click)="ngxSmartModalService.getModal('newDeviceModal').open()">
+              <span class="btn-label">
+                <i class="fa fa-plus"></i>
+              </span>Add New Device
+            </button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="deviceTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label">Selected Product</label>
+          <div class="col-md-7">
+            <select class="form-control">
+              <option value="">Please Select</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-labeled btn-info mb-2" type="button" (click)="ngxSmartModalService.getModal('assignProductModal').open()">
+              <span class="btn-label">
+                <i class="fa fa-link"></i>
+              </span>Assign Product
+            </button>
+          </div>
+          <a class="col-xs-1 align-self-center text-dark" href="#" [tooltip]="selectProductTooltip" container="body"><em class="icon-info"></em></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Products Parameters</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Active</td>
+                    <td>Y</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Commission Rate</td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Commissioning Time</td>
+                    <td>150</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Datasheet Location</td>
+                    <td><a href="#">product.pdf</a></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Install Rate</td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>Install Time</td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>Unit Cost</td>
+                    <td>100</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Sofware System Parameters</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>ActiveOnSupervision</td>
+                    <td>True</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>ArmedByDefault</td>
+                    <td>True</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Enabled</td>
+                    <td>False</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>ReverseSenseInput</td>
+                    <td>True</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>SendToJournal</td>
+                    <td>False</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>SendToMonitorStation</td>
+                    <td>False</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="card-header" style="padding-left:0px !important">Logical Settings</div>
+      <div class="form-group">
+        <div class="form-group row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Nicname</td>
+                    <td>BGU</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Priority</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Subpriority</td>
+                    <td>4</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ngx-smart-modal #newDeviceModal identifier="newDeviceModal" customClass='msg-modal'>
+    <div class="page-header" style="font-size: large; margin: 0px 0px 15px 0px; padding:0px">Create Device</div>
+    <div class="form-group">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Device Name</label>
+        <div class="col-md-7">
+          <input class="form-control" type="text" placeholder="Please enter device name" />
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-labeled btn-info mb-2" type="button">
+            <span class="btn-label">
+              <i class="fa fa-plus"></i>
+            </span>Add Device
+          </button>
+        </div>
+        <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="addDeviceTooltip" container="body"><em class="icon-info"></em></a>
+      </div>
+      <div class="page-header" style="font-size: large; margin: 0px 0px 15px 0px; padding:0px">Device List</div>
+      <div class="form-group row">
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>AACS-1234-Break Glass</td>
+                <td>
+                  <button class="btn btn-xs btn-info" type="button">Edit</button>
+                  <button class="btn btn-xs btn-warning" type="button">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>CCTV-1234-Hyper Camera</td>
+                <td>
+                  <button class="btn btn-xs btn-info" type="button">Edit</button>
+                  <button class="btn btn-xs btn-warning" type="button">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>IHAS-YOUHAVE-135</td>
+                <td>
+                  <button class="btn btn-xs btn-info" type="button">Edit</button>
+                  <button class="btn btn-xs btn-warning" type="button">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12">
+          <button class="btn btn-warning" (click)="newDeviceModal.close()">Close</button>
+        </div>
+      </div>
+    </div>
+  </ngx-smart-modal>
+
+  <ngx-smart-modal #assignProductModal identifier="assignProductModal" customClass='msg-modal'>
+    <div class="page-header" style="font-size: large; margin: 0px 0px 15px 0px; padding:0px">Assign Product</div>
+    <div class="form-group">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Select manufacturer</label>
+        <div class="col-md-9">
+          <select class="form-control">
+            <option value="">Please Select</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+          </select>
+        </div>
+        <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="selectManufacturerTooltip" container="body"><em class="icon-info"></em></a>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Product library</label>
+        <div class="col-md-9">
+          Auto-Break-Glass
+        </div>
+        <a class="col-md-1 align-self-center text-dark" href="#" [tooltip]="productLibraryTooltip" container="body"><em class="icon-info"></em></a>
+      </div>
+      <div class="page-header" style="font-size: large; margin: 0px 0px 15px 0px; padding:0px">DNA Product List</div>
+      <div class="form-group row">
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="c-radio">
+                    <label><input type="radio" name="products" value="1" /><span class="fa fa-circle"></span></label>
+                  </div>
+                </td>
+                <td>AACS-1234-Break Glass</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="c-radio">
+                    <label>  <input type="radio" name="products" value="1" /><span class="fa fa-circle"></span></label>
+                  </div>
+                </td>
+                <td>AACS-4567-Break Glass</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="c-radio">
+                    <label><input type="radio" name="products" value="1" /><span class="fa fa-circle"></span></label>
+                  </div>
+                </td>
+                <td>AACS-7890-Break Glass</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-12">
+          <button class="btn btn-labeled btn-info mb-2" type="button">
+            <span class="btn-label">
+              <i class="fa fa-link"></i>
+            </span>Assign Product
+          </button>
+        </div>
+      </div>
+    </div>
+  </ngx-smart-modal>
+</form>
+
+<ng-template #dnaClientTooltip>
+  <h4>Add Device</h4>
+  <h5>Select the DNA you wish to work on</h5>
+</ng-template>
+
+<ng-template #configurationTypeTooltip>
+  <h4>Configuration Type</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #disciplineTooltip>
+  <h4>Discipline</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #typeTooltip>
+  <h4>Type</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #sectionTooltip>
+  <h4>Section</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #type2Tooltip>
+  <h4>Type 2</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #deviceTooltip>
+  <h4>Device</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #selectProductTooltip>
+  <h4>Select Product</h4>
+  <h5>-</h5>s
+</ng-template>
+
+<ng-template #addDeviceTooltip>
+  <h4>Add Device</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #selectManufacturerTooltip>
+  <h4>Select Manufacturer</h4>
+  <h5>-</h5>
+</ng-template>
+
+<ng-template #productLibraryTooltip>
+  <h4>Product Library</h4>
+  <h5>-</h5>
+</ng-template>
