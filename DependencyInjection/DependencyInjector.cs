@@ -4,6 +4,7 @@ using Application.Modules.Modules.Authentication;
 using Application.Modules.Modules.AutomationFunctions;
 using Application.Modules.Modules.Dna;
 using Application.Modules.Modules.FileUpload;
+using Application.Modules.Modules.Help;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using CrossCutting.Logging;
@@ -15,6 +16,7 @@ using CrossCutting.Security.JsonWebToken;
 using Domain.Domains.Interfaces;
 using Domain.Domains.Modules.Authentication;
 using Domain.Domains.Modules.Dna;
+using Domain.Domains.Modules.Help;
 using Domain.Domains.Modules.User;
 using Infrastructure.Database.Interfaces;
 using Infrastructure.Database.Repositories;
@@ -61,7 +63,7 @@ namespace CrossCutting.DependencyInjection
             Services.AddScoped<IDnaApplication, DnaApplication>();
             Services.AddScoped<IFileUploadApplication, FileUploadApplication>();
             Services.AddScoped<IAutomationFunctionsApplication, AutomationFunctionsApplication>();
-            
+            services.AddScoped<ISectionApplication, SectionApplication>();
 
             //// Solution.CrossCutting
             Services.AddScoped<ICriptography, Criptography>();
@@ -75,6 +77,7 @@ namespace CrossCutting.DependencyInjection
             Services.AddScoped<IUserDomain, UserDomain>();
             Services.AddScoped<IDnaDomain, DnaDomain>();
             Services.AddScoped<IDnaClientDomain, DnaClientDomain>();
+            Services.AddScoped<ISectionDomain, SectionDomain>();
 
             //// Solution.Infrastructure.Database
             Services.AddScoped<IDatabaseUnitOfWork, DatabaseUnitOfWork>();
@@ -83,6 +86,9 @@ namespace CrossCutting.DependencyInjection
             Services.AddScoped<IDnaRepository, DnaRepository>();
             Services.AddScoped<IDnaClientRepository, DnaClientRepository>();
             Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            Services.AddScoped<ISectionRepository, SectionRepository>();
+
+
 
             return Services;
         }

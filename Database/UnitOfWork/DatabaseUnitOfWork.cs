@@ -8,16 +8,19 @@ namespace Infrastructure.Database.UnitOfWork
         public IUserRepository UserRepository { get; }
         public IDnaRepository DnaRepository { get; }
         public IDnaClientRepository DnaClientRepository { get; }
+        public ISectionRepository SectionRepository { get; }
 
         public DatabaseUnitOfWork(IUserRepository userRepository,
                                   IDnaRepository dnaRepository,
                                   IDnaClientRepository dnaClientRepository,
+                                  ISectionRepository sectionRepository,
                                   DesignAutomatorContext context)
         {
             Context = context;
             UserRepository = userRepository;
             DnaRepository = dnaRepository;
             DnaClientRepository = dnaClientRepository;
+            SectionRepository = sectionRepository;
         }
 
         private DesignAutomatorContext Context { get; set; }

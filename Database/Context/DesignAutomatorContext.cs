@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Model.Models;
+using Model.Models.Help;
 
 namespace Infrastructure.Database.Context
 {
@@ -34,7 +35,7 @@ namespace Infrastructure.Database.Context
         public virtual DbSet<ProductLibrary> ProductLibrary { get; set; }
         public virtual DbSet<ProductLibraryHeader> ProductLibraryHeader { get; set; }
         public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<Section> Section { get; set; }
+        public virtual DbSet<Model.Models.Section> Section { get; set; }
         public virtual DbSet<SectionDisciplineMap> SectionDisciplineMap { get; set; }
         public virtual DbSet<ServerInfo> ServerInfo { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
@@ -46,6 +47,9 @@ namespace Infrastructure.Database.Context
         public virtual DbSet<UserDnaClient> UserDnaclient { get; set; }
         public virtual DbSet<User> User { get; set; }
 
+        //Help
+        public virtual DbSet<Model.Models.Help.Section> Sections { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
         }
@@ -776,7 +780,7 @@ namespace Infrastructure.Database.Context
                     .HasConstraintName("FK_Products_ProductLibrary");
             });
 
-            modelBuilder.Entity<Section>(entity =>
+            modelBuilder.Entity<Model.Models.Section>(entity =>
             {
                 entity.ToTable("Section", "Automation");
 
@@ -1092,6 +1096,20 @@ namespace Infrastructure.Database.Context
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.ClientId)
                     .HasConstraintName("FK_Users_Clients");
+            });
+
+            modelBuilder.Entity<Model.Models.Help.Section>(entity =>
+            {
+                entity.ToTable("Sections",schema:"help");
+                entity.Property(e => e.Title).IsRequired().HasMaxLength(255);
+            });
+
+            modelBuilder.Entity<Question>(entity =>
+            {
+                entity.ToTable("Questions", schema: "help");
+                
+                entity.Property(e => e.Title).IsRequired().HasMaxLength(255);
+                entity.Property(e => e.Answer).IsRequired().HasMaxLength(255);
             });
         }
     }

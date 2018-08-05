@@ -7,6 +7,8 @@ namespace Infrastructure.Database.Interfaces
         IDnaRepository DnaRepository { get; }
 
         IDnaClientRepository DnaClientRepository { get; }
+        ISectionRepository SectionRepository { get; }
+        
 
         void SaveChanges();
     }

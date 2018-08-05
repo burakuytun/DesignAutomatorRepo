@@ -5,14 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CrossCutting.Resources\CrossCutting.Resources.csproj" />
-    <ProjectReference Include="..\CrossCutting.Utils\CrossCutting.Utils.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>C:\Users\burak\.nuget\packages\newtonsoft.json\9.0.1\lib\netstandard1.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\CrossCutting.Resources\CrossCutting.Resources.csproj" />
+    <ProjectReference Include="..\CrossCutting.Utils\CrossCutting.Utils.csproj" />
   </ItemGroup>
 
 </Project>

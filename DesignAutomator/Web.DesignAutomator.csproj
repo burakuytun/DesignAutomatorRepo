@@ -55,6 +55,8 @@
     <None Remove="ClientApp\src\app\models\dna\dnaclient.model.ts" />
     <None Remove="ClientApp\src\app\models\dna\filtereduserdna.ts" />
     <None Remove="ClientApp\src\app\models\dna\userdnaclient.model.ts" />
+    <None Remove="ClientApp\src\app\models\help\question.ts" />
+    <None Remove="ClientApp\src\app\models\help\section.ts" />
     <None Remove="ClientApp\src\app\routes\aacs\aacs.module.ts" />
     <None Remove="ClientApp\src\app\routes\administration\administration.module.ts" />
     <None Remove="ClientApp\src\app\routes\administration\useradministration\dummydata.ts" />
@@ -67,6 +69,7 @@
     <None Remove="ClientApp\src\app\shared\services\automationfunctions.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\automationutil.serivce.ts" />
     <None Remove="ClientApp\src\app\shared\services\dna.service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\help\section.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\user.service.ts" />
     <None Remove="ClientApp\src\app\shared\utils\fileupload.util.service.ts" />
     <None Remove="ClientApp\src\app\shared\utils\jsonstringfyonce.util.ts" />
@@ -86,6 +89,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\dna\dnaclient.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dna\filtereduserdna.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dna\userdnaclient.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\help\question.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\help\section.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\routes\aacs\aacs.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\routes\administration\administration.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\routes\administration\useradministration\dummydata.ts" />
@@ -97,6 +102,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\automationfunctions.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\automationutil.serivce.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\dna.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\help\section.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\user.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\utils\fileupload.util.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\utils\jsonstringfyonce.util.ts" />
