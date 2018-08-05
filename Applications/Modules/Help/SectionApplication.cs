@@ -2,6 +2,7 @@
 using Application.Modules.Interfaces;
 using Application.Modules.Modules.Base;
 using CrossCutting.Mapping;
+using CrossCutting.Utils.PagedList;
 using Domain.Domains.Modules.Help;
 using Model.ViewModels.Help;
 
@@ -15,11 +16,23 @@ namespace Application.Modules.Modules.Help
         {
             Section = section;
         }
-        public List<SectionViewModel> List()
+        public List<SectionViewModel> List(PagedListParameters parameters)
         {
-            var sections = Section.List();
+            var sections = Section.List(parameters);
 
             return new Mapper().Map<List<SectionViewModel>>(sections);
+        }
+
+        public List<SectionViewModel> ListWithQuestions()
+        {
+            var sections = Section.ListWithQuestions();
+
+            return new Mapper().Map<List<SectionViewModel>>(sections);
+        }
+
+        public long Count()
+        {
+            return Section.Count();
         }
     }
 }

@@ -13,7 +13,8 @@ import { RoutesModule } from './routes/routes.module';
 import { UserService } from "./shared/services/user.service";
 import { CustomErrorHandler } from "./shared/handlers/error.handler";
 import { DnaService } from "./shared/services/dna.service";
-import {SectionService} from "./shared/services/help/section.service";
+import { SectionService } from "./shared/services/help/section.service";
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -37,7 +38,8 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    PaginationModule.forRoot()
   ],
   providers: [DnaService, UserService,SectionService],
   bootstrap: [AppComponent]

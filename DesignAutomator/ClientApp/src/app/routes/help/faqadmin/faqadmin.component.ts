@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SectionService } from "../../../shared/services/help/section.service";
+import { Section } from "../../../models/help/section";
 
 @Component({
   selector: 'app-faqadmin',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FaqAdminComponent implements OnInit {
 
-  constructor() { }
+  sections: Section[];
+  count: number;
+  
+  constructor(private sectionService: SectionService) {
+    this.count = 0;
+  }
 
   ngOnInit() {
+    this.sectionService.count().subscribe(result => {
+      this.count = ((result) as any).count;
+    });
+    this.sectionService.getList(0).subscribe(result => {
+      this.sections = <Section[]>(result);
+    });
+  }
+
+  pageChanged(currentPage: number): void {
+    this.sectionService.getList(currentPage).subscribe(result => {
+      this.sections = <Section[]>(result);
+    });
+  }
+
+  newQuestion() {
+    
   }
 
 }

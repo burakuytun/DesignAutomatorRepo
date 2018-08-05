@@ -12,9 +12,19 @@ export class SectionService {
     
   }
 
-  getList() {
-    return this.http.get<Section[]>(`api/${this.service}/List`)
+  getListWithQuestions() {
+    return this.http.get<Section[]>(`api/${this.service}/list-with-questions`)
       .map((response) => response);
   }
 
+  getList(index:number) {
+    return this.http.get<Section[]>(`api/${this.service}/list/${index}`)
+      .map((response) => response);
+  }
+
+  count() {
+    return this.http.get<Section[]>(`api/${this.service}/count`)
+      .map((response) => response);
+    
+  }
 }

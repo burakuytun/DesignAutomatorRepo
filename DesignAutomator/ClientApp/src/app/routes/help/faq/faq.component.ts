@@ -12,28 +12,11 @@ export class FaqComponent implements OnInit {
   oneAtATime=true;
   sections: Section[];
 
-  constructor(private sectionService: SectionService) { }
+  constructor(private sectionService: SectionService) {}
 
   ngOnInit() {
-    this.sectionService.getList().subscribe(result => {
+    this.sectionService.getListWithQuestions().subscribe(result => {
       this.sections = <Section[]>(result);
-      for (let section of this.sections) {
-        for (let question of section.questions) {
-          question.isOpen = false;
-        }
-      }
     });
-  }
-
-  closeOtherAccordionItems(event,questionId) {
-    if (event) {
-      for (let section of this.sections) {
-        for (let question of section.questions) {
-          if (question.id != questionId) {
-            question.isOpen = false;  
-          }
-        }
-      }
-    }
   }
 }
